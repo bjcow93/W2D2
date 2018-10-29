@@ -1,26 +1,57 @@
 # PHASE 2
+require 'byebug'
 def convert_to_int(str)
-  Integer(str)
+  begin
+    Integer(str)
+  rescue ArgumentError => e
+    puts "wrong argument type"
+    puts "The error was: #{e.message}"
+    nil
+  end
 end
+
 
 # PHASE 3
 FRUITS = ["apple", "banana", "orange"]
 
+class CoffeeError < StandardError
+  def message
+    puts "I had coffee, so you can try again"
+  end
+end
+
+class NoCoffeeError < StandardError
+  def message
+    puts "NO COFFEE. NO RETRY"
+  end
+end
+
 def reaction(maybe_fruit)
+  # debugger
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
-  else 
-    raise StandardError 
-  end 
+  elsif maybe_fruit == 'coffee'
+    raise CoffeeError
+  else
+    raise NoCoffeeError
+  end
+
 end
 
 def feed_me_a_fruit
-  puts "Hello, I am a friendly monster. :)"
+  begin
+    puts "Hello, I am a friendly monster. :)"
 
-  puts "Feed me a fruit! (Enter the name of a fruit:)"
-  maybe_fruit = gets.chomp
-  reaction(maybe_fruit) 
-end  
+    puts "Feed me a fruit! (Enter the name of a fruit:)"
+    maybe_fruit = gets.chomp
+    reaction(maybe_fruit)
+  rescue CoffeeError => e
+     e.message
+    retry
+  rescue NoCoffeeError => e
+    e.message
+  end
+end
 
 # PHASE 4
 class BestFriend
@@ -39,8 +70,6 @@ class BestFriend
   end
 
   def give_friendship_bracelet
-    puts "Hey bestie, I made you a friendship bracelet. It says my name, #{@name}, so you never forget me." 
+    puts "Hey bestie, I made you a friendship bracelet. It says my name, #{@name}, so you never forget me."
   end
 end
-
-
