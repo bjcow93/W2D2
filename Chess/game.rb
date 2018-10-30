@@ -6,7 +6,8 @@ class Game
     @board = Board.new
     @display = Display.new(@board)
     @players = {
-
+      player1 => HumanPlayer.new(:white, @display),
+      player2 => ComputerPlayer.new(:black, @display)
     }
   end
 
