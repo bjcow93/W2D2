@@ -8,7 +8,7 @@ class Board
 
   def initialize
     @sentinel = NullPiece.instance
-    @rows = Array.new(8) {Array.new(8, @sentinel)}
+    @rows = Array.new(8) {Array.new(8, @sentinel.symbol)}
    #NullPiece
     populate_board
   end
@@ -19,8 +19,8 @@ class Board
       if row_idx == 0 || row_idx == 1
         row.each_with_index do |piece, col_idx|
           piece = Piece.new(:black, self, [row_idx, col_idx])
-
-          @rows[row_idx][col_idx] = piece
+          # print piece.symbol
+          @rows[row_idx][col_idx] = piece.symbol
         end
       # elsif row_idx.between?(3,5)
       #   row.each_with_index do |piece, col_idx|
@@ -30,8 +30,8 @@ class Board
       elsif row_idx.between?(6,7)
         row.each_with_index do |piece, col_idx|
           piece = Piece.new(:white, self, [row_idx, col_idx])
-
-          @rows[row_idx][col_idx]  = piece
+          # print piece.symbol
+          @rows[row_idx][col_idx]  = piece.symbol
         end
       end
     end
