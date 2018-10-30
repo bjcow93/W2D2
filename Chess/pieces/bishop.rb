@@ -1,7 +1,9 @@
 require_relative "Slideable"
+require_relative "piece"
 
 class Bishop < Piece
   include Slideable
+  attr_reader :possible_moves
 
   def initialize
     @possible_moves = []
@@ -25,12 +27,10 @@ end
 
 
 def valid_move?(start_pos, end_pos)
-  #start_pos = [1,1]
-  #end_pos = [5,5]
   if res.any? do |sub_move|
-    if start_pos[0] + sub_move[0] == end_pos[0] && start_pos[1] + sub_move[1] == end_pos[1]
+    start_pos[0] + sub_move[0] == end_pos[0] && start_pos[1] + sub_move[1] == end_pos[1]
     end
   end
-  elsif
 end
+
 end
