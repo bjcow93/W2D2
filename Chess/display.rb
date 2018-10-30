@@ -3,29 +3,21 @@ require_relative 'cursor'
 require 'colorize'
 
 class Display
-  attr_reader :board_dup
+  attr_reader :board
 
   def initialize(board = Board.new)
-    @board_dup = board
-    #@board_dup is now an object
-    @cursor = Cursor.new([4,4], @board_dup)
-    navigate_cursor
+    @board = board
+    #@board is now an object
+    @cursor = Cursor.new([4,4], @board)
+    show_board
   end
 
   #cursor_pos is an array
   def show_board(color=:red)
     #@cursor.cursor_pos = array position of current cursor.
-    #board_dup is an object with #[](pos) method defined
-    @board_dup[@cursor.cursor_pos].symbol.colorize(color)
-    @board_dup.render
-  end
-
-
-  def navigate_cursor
-    show_board
-    # until @cursor.handle_key(key) == @cursor.cursor_pos
-    #   show_board(:green)
-    # end
+    #board is an object with #[](pos) method defined
+    @board[@cursor.cursor_pos].symbol.colorize(color)
+    @board.render
   end
 
   def inspect

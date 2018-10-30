@@ -17,8 +17,8 @@ class Piece
     print "#{@symbol}"
   end
 
-#puts symbol and color
-  # def to_s
-  #   @symbol.colorize(color)
-  # end
+# puts symbol and color
+  def to_s
+     " #{symbol} "
+  end
 end
