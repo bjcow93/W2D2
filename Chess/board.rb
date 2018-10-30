@@ -6,8 +6,9 @@ class Board
   attr_accessor :rows
 
   def initialize
+    @sentinel = nil
     @rows = Array.new(8) {Array.new(8)}
-    @sentinel = nil   #NullPiece
+   #NullPiece
     populate_board
   end
 
@@ -71,7 +72,7 @@ class Board
   def valid_pos?(pos)
     row,col = pos
     return false if !row.between?(0,7) || !col.between?(0,7)
-    true 
+    true
   end
 
 end
