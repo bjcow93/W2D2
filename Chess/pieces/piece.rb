@@ -12,6 +12,10 @@ class Piece
     @pos = pos
   end
 
+  def moves
+    possible_moves = []
+  end
+
   def inspect
     print "#{@color}"
     print "#{@symbol}"
