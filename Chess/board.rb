@@ -1,4 +1,6 @@
-require_relative "piece", 'display'
+require_relative "piece"
+require_relative "display"
+
 
 class Board
   attr_accessor :rows
@@ -65,5 +67,11 @@ class Board
     @rows
   end
   #need Piece and NullPiece. NullPiece < Piece
+
+  def valid_pos?(pos)
+    row,col = pos
+    return false if !row.between?(0,7) || !col.between?(0,7)
+    true 
+  end
 
 end
