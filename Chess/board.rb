@@ -1,13 +1,14 @@
 require_relative "piece"
 require_relative "display"
+require_relative "nullpiece"
 
 
 class Board
   attr_accessor :rows
 
   def initialize
-    @sentinel = nil
-    @rows = Array.new(8) {Array.new(8)}
+    @sentinel = NullPiece.instance
+    @rows = Array.new(8) {Array.new(8, @sentinel)}
    #NullPiece
     populate_board
   end
