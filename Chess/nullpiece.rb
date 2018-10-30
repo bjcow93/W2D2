@@ -8,4 +8,8 @@ class NullPiece
     @symbol = ' '
     @color = nil
   end
+
+  def to_s
+     " #{symbol} "
+  end
 end
