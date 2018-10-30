@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Piece
   attr_reader :symbol, :color, :board
   attr_accessor :pos
@@ -10,4 +12,13 @@ class Piece
     @pos = pos
   end
 
+  def inspect
+    print "#{@color}"
+    print "#{@symbol}"
+  end
+
+#puts symbol and color
+  # def to_s
+  #   @symbol.colorize(color)
+  # end
 end

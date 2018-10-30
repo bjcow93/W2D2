@@ -4,47 +4,62 @@ require_relative "nullpiece"
 
 
 class Board
-  attr_accessor :rows
+  attr_accessor :grid
 
   def initialize
     @sentinel = NullPiece.instance
-    @rows = Array.new(8) {Array.new(8, @sentinel.symbol)}
+    @grid = Array.new(8) {Array.new(8, @sentinel)}
    #NullPiece
-    populate_board
+   populate_board
+  #  render
   end
 
 # private method. get logic workings
   def populate_board
-    @rows.each_with_index do |row, row_idx|
+    @grid.each_with_index do |row, row_idx|
       if row_idx == 0 || row_idx == 1
         row.each_with_index do |piece, col_idx|
           piece = Piece.new(:black, self, [row_idx, col_idx])
           # print piece.symbol
-          @rows[row_idx][col_idx] = piece.symbol
+          @grid[row_idx][col_idx] = piece
         end
-      # elsif row_idx.between?(3,5)
-      #   row.each_with_index do |piece, col_idx|
-      #     piece = Piece.new(:black, self, [row_idx, col_idx])
-      #   end
-      # end
+
       elsif row_idx.between?(6,7)
         row.each_with_index do |piece, col_idx|
           piece = Piece.new(:white, self, [row_idx, col_idx])
           # print piece.symbol
-          @rows[row_idx][col_idx]  = piece.symbol
+          @grid[row_idx][col_idx]  = piece
         end
       end
     end
   end
 
+  def render
+    @grid.each do |row|
+      row.each do |piece|
+        print piece.symbol
+      end
+      puts
+    end
+  end
+
+  # override inspect method
+  def inspect
+    print ""
+  end
+
+  # def dup
+  #   self.dup # @grid.map {|el| el.is_a?(Array) ? el.dup : el}
+  # end
+
   def [](pos)
     row, col = pos
-    @rows[row][col]
+    @grid[row][col]
   end
 
   def []=(pos, value)
     row, col = pos
-    @rows[row][col] = value
+    @grid[row][col] = value
   end
 
   def move_piece(start_pos, end_pos)
@@ -66,7 +81,7 @@ class Board
     end
     self[end_pos] = self[start_pos]
     self[start_pos] = nil
-    @rows
+    @grid
   end
   #need Piece and NullPiece. NullPiece < Piece
 
