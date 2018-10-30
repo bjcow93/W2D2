@@ -6,12 +6,12 @@ class Game
     @board = Board.new
     @display = Display.new(@board)
     @players = {
-      
+
     }
   end
 
   def play
-
+    @display
   end
 
 end
