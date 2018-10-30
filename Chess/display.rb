@@ -8,8 +8,15 @@ class Display
   end
 
   #cursor_pos is an array
-  def render
-    board[@cursor.cursor_pos].colorize(:red)
+  def render(color=:red)
+    board[@cursor.cursor_pos].colorize(color)
     board.rows
+  end
+
+  def navigate_cursor(start_pos)
+    render
+    until @cursor.handle_key(key) == @cursor.cursor_pos
+      render(:green)
+    end
   end
 end
