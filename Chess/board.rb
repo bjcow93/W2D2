@@ -1,6 +1,6 @@
-require_relative "piece"
+require "./pieces/piece.rb"
 require_relative "display"
-require_relative "nullpiece"
+require "./pieces/nullpiece.rb"
 
 
 class Board
