@@ -1,9 +1,11 @@
 class Piece
-  attr_reader :color, :board
+  attr_reader :symbol, :color, :board
   attr_accessor :pos
 
   def initialize(color, board, pos)
     @color = color
+    # generic symbol for testing
+    @symbol = "P"
     @board = board
     @pos = pos
   end
