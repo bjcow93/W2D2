@@ -7,6 +7,7 @@ class Bishop < Piece
 
   def initialize
     @possible_moves = []
+    @symbol = :Bishop
   end
 
   # DIAGONAL = [[1,1], [1,-1], [-1,1], [-1,-1]]
@@ -27,7 +28,7 @@ end
 
 
 def valid_move?(start_pos, end_pos)
-  if res.any? do |sub_move|
+  if @possible_moves.any? do |sub_move|
     start_pos[0] + sub_move[0] == end_pos[0] && start_pos[1] + sub_move[1] == end_pos[1]
     end
   end

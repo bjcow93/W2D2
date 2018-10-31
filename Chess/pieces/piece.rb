@@ -26,3 +26,7 @@ class Piece
      " #{symbol} "
   end
 end
+
+
+#start_pos = [3,3]
+#end_pos = [5,7]
